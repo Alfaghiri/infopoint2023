@@ -7,9 +7,11 @@ import Col from "react-bootstrap/Card";
 import Row from "react-bootstrap/Card";
 import Popup from "reactjs-popup";
 import Clock from "./Clock";
+import RingLoader from "react-spinners/RingLoader";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faNewspaper } from "@fortawesome/free-solid-svg-icons";
 function News() {
+  const [loading, setLoading] = useState(true);
   const [news, setNews] = useState([]);
   const ref = useRef(null);
   const closePopup = () => ref.current.close();
@@ -106,6 +108,7 @@ function News() {
       .then((res) => res.text())
       .then((data) => {
         var xml = new XMLParser().parseFromString(data);
+        setLoading(false);
         for (let i = 10; i < xml.children[0].children.length; i++) {
           setNews((news) => [...news, xml.children[0].children[i].children]);
         }
@@ -114,9 +117,24 @@ function News() {
       .catch((err) => console.log(err));
   }, []);
 
+  /*   useEffect(() => {
+    fetch(
+      "https://www.ots.at/api/liste?app=98cff5cb1d921435af7c3ff0d8b25840&query=%28%28HEADER%3D%275+KI%27+OR+HEADER%3D%275+KA%27%29%29&sourcetype=ALL&anz=50"
+    )
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+      
+
+        setNews(data.ergebnisse);
+        console.log(data.ergebnisse);
+      });
+  }, []); */
+
   return (
     <div>
-      <div className="text-center bg-dark shopp">
+      <div className="text-center shopp bg-dark">
         <div className="row">
           <div className="col mt-3 m-2">
             <Clock />
@@ -149,6 +167,17 @@ function News() {
             />
           </div>
         </div>
+      </div>
+      <div className="text-white text-center loadingcentered">
+        {loading ? (
+          <div>
+            <RingLoader color="#FFFFFF" />
+            <br />
+            loading...
+          </div>
+        ) : (
+          ""
+        )}
       </div>
       <div className="maincontent">
         {news.map((item, index) => {
@@ -206,6 +235,14 @@ function News() {
       </div>
     </div>
   );
+
+  /* return console.log(item.ANHANG); */
+
+  /* 
+    <div>
+      <button onClick={() => navigate("/")}>Home</button>
+    
+    </div> */
 }
 export default News;
 

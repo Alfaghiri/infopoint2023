@@ -5,6 +5,7 @@ import Col from "react-bootstrap/Card";
 import Raw from "react-bootstrap/Card";
 import Popup from "reactjs-popup";
 import Clock from "./Clock";
+import RingLoader from "react-spinners/RingLoader";
 import ReactStars from "react-rating-stars-component";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -21,8 +22,10 @@ import {
   faMapLocationDot,
   faPhone,
   faShop,
+  faUtensils,
 } from "@fortawesome/free-solid-svg-icons";
 function Resturant() {
+  const [loading, setLoading] = useState(true);
   let navigate = useNavigate();
   const [resturant, setResturant] = useState([]);
   const ref = useRef(null);
@@ -46,13 +49,14 @@ function Resturant() {
         return res.json();
       })
       .then((data) => {
+        setLoading(false);
         setResturant(data);
         console.log(data);
       });
   }, []);
 
   function getkcal(dist) {
-    return dist * 50;
+    return Math.round(dist * 50);
   }
   function getrate(rate) {
     let rater = Math.round(rate);
@@ -68,8 +72,8 @@ function Resturant() {
       return (
         <div>
           <tr>
-            <td>{kcal * kcalvalue[0]}g</td>
-            <td> {" " + kcaltable[0]}</td>
+            <td>{kcal * kcalvalue[0]} g </td>
+            <td> {"  " + kcaltable[0]}</td>
           </tr>
         </div>
       );
@@ -78,20 +82,20 @@ function Resturant() {
       return (
         <div>
           <tr>
-            <td>{restkcal * kcalvalue[0]}g</td>
-            <td> {" " + kcaltable[0]}</td>
+            <td>{restkcal * kcalvalue[0]}g </td>
+            <td> {"  " + kcaltable[0]}</td>
           </tr>
           <tr>
-            <td>{restkcal * kcalvalue[1]}g</td>
-            <td> {" " + kcaltable[1]}</td>
+            <td>{restkcal * kcalvalue[1]}g </td>
+            <td> {"  " + kcaltable[1]}</td>
           </tr>
         </div>
       );
     }
   }
   return (
-    <div>
-      <div className="text-white bg-dark shopp">
+    <>
+      <div className="text-white shopp bg-dark">
         <div className="text-center">
           <div className="row">
             <div className="col mt-3 m-2">
@@ -106,7 +110,7 @@ function Resturant() {
               <br />
               <img />
               <FontAwesomeIcon
-                icon={faShop}
+                icon={faUtensils}
                 color="white"
                 style={{ height: "10vw" }}
               />
@@ -126,6 +130,17 @@ function Resturant() {
             </div>
           </div>
         </div>
+      </div>
+      <div className="text-white text-center loadingcentered">
+        {loading ? (
+          <div>
+            <RingLoader color="#FFFFFF" />
+            <br />
+            loading...
+          </div>
+        ) : (
+          ""
+        )}
       </div>
       <div className="container shoplogo maincontent">
         <div className="row">
@@ -223,7 +238,7 @@ function Resturant() {
                                 modal
                               >
                                 <h2>
-                                  {getkcal(item.distance)}kcal Entspricht:
+                                  {getkcal(item.distance)} kcal Entspricht:
                                 </h2>
                                 {getcal(getkcal(item.distance))}
                               </Popup>
@@ -262,7 +277,7 @@ function Resturant() {
           })}
         </div>
       </div>
-    </div>
+    </>
   );
 }
 export default Resturant;

@@ -1,3 +1,6 @@
+/* body{
+  background-color: black;
+} */
 html {
   background-color: #212529;
 }
@@ -111,6 +114,29 @@ html {
 .bib td {
   padding: 0.3vw;
 }
+
+.jobs p {
+  font-size: 2vw;
+}
+
+.jobs h1 {
+  font-size: 3vw;
+}
+.jobs h2 {
+  font-size: 2.5vw;
+}
+.jobs h3 {
+  text-align: left;
+  font-size: 1.5vw;
+}
+.jobs img {
+  height: 80%;
+  width: 80%;
+}
+.jobs td {
+  padding: 0.3vw;
+}
+
 .datecard h1 {
   font-size: medium;
 }
@@ -146,28 +172,30 @@ html {
     rgba(255, 253, 253, 1) 100%
   );
 }
-.maincontent {
-  overflow-x: hidden;
-  padding-top: 25%;
+.centered {
+  position: absolute;
+  top: 20%;
+  left: 30%;
+  transform: translate(-50%, -50%);
 }
-.shopp {
-  overflow-x: hidden;
-  position: fixed;
-  width: 100%;
+.imgcontainer {
+  position: relative;
+  text-align: center;
+  color: white;
 }
-.cls-1 {
-  fill: gray;
-  stroke: #fff;
-  stroke-width: 8px;
+
+.eventcard {
+  background: rgb(131, 58, 180);
+  background: linear-gradient(
+    360deg,
+    rgba(131, 58, 180, 1) 0%,
+    rgba(3, 3, 3, 1) 0%,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(130, 127, 123, 1) 87%
+  );
 }
-.cls-2,
-.cls-3,
-.cls-4 {
-  fill: none;
-  stroke: #fff;
-}
-.cls-5 {
-  fill: #fff;
+.eventcard h1 {
+  font-size: 2vw;
 }
 .clockcard h1 {
   font-size: 25px;
@@ -178,6 +206,12 @@ html {
   color: black;
 }
 .shopp {
+  overflow-x: hidden;
+  width: 100%;
+  position: fixed;
+}
+.maincontent {
+  padding-top: 25%;
   overflow-x: hidden;
 }
 .shoplogo {
@@ -201,6 +235,20 @@ input {
   border-radius: 20px;
   border-width: 0;
   text-align: center;
+}
+.cls-1 {
+  fill: gray;
+  stroke: white;
+  stroke-width: 8px;
+}
+.cls-2,
+.cls-3,
+.cls-4 {
+  fill: none;
+  stroke: white;
+}
+.cls-5 {
+  fill: white;
 }
 .buchenbutton {
   width: 40%;
@@ -285,6 +333,20 @@ input::placeholder {
   width: 90%;
   border-radius: 5px;
 }
+.loadingcentered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+}
+.salecard-content {
+  background: #585858;
+  padding-top: 25px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 20px;
+  width: 90%;
+  border-radius: 5px;
+}
 .shoppcard-content {
   background: #ffffff;
   padding-top: 25px;
@@ -293,6 +355,9 @@ input::placeholder {
   padding-right: 20px;
   width: 80%;
   border-radius: 5px;
+}
+.popup-overlay {
+  backdrop-filter: blur(12px);
 }
 
 .popupnews h1 {
@@ -315,10 +380,17 @@ input::placeholder {
   height: 150px;
   border-radius: 50%;
 }
+.fc-v-event .fc-event-title {
+  font-size: 1.5vw;
+}
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+.examcard {
+  width: 100%;
+  opacity: 0.6;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -354,6 +426,16 @@ input::placeholder {
   .homebg video {
     width: 95vw;
     border-radius: 3%;
+  }
+  .infoi button {
+    width: 4vw;
+    height: 4vw;
+    font-weight: bolder;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #0c0b0b;
+    color: #b6b6b6;
+    font-size: 2vw;
   }
 }
 @media screen and (max-width: 900px) and (min-width: 600px) {

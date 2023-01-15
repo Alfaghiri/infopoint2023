@@ -19,9 +19,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "./firebase-config";
 import { db } from "./firebase-config";
 import { collection, getDocs } from "firebase/firestore";
-
 import { Alert } from "bootstrap";
-
 function Buchen() {
   let navigate = useNavigate();
   const [users, setUsers] = useState([]);
@@ -41,7 +39,6 @@ function Buchen() {
   const closeTooltip2 = () => ref2.current.close();
   const usersCollrctionRef = collection(db, "users");
   var today = new Date();
-
   const login = async () => {
     try {
       const user = await signInWithEmailAndPassword(auth, userinput, passinput);
@@ -50,7 +47,6 @@ function Buchen() {
       alert(error.message);
     }
   };
-
   /* useEffect(() => {
     const getUsers = async () => {
       const data = await getDocs(usersCollrctionRef);
@@ -58,7 +54,6 @@ function Buchen() {
     };
     getUsers();
   }, []); */
-
   function handleShift(button) {
     let inputkey = userinput;
     if (button != "{lock}" && button != "{LOCK}" && button != "&#10533") {
@@ -72,7 +67,6 @@ function Buchen() {
     if (button == "{lock}") {
       setLayoutName("shift");
     }
-
     if (button == "{LOCK}") {
       setLayoutName("default");
     }
@@ -84,7 +78,6 @@ function Buchen() {
       setCinput(cinput - 1);
     }
   }
-
   function handleShift2(button) {
     let inputkey = passinput;
     if (button != "{lock}" && button != "{LOCK}" && button != "&#10533") {
@@ -98,7 +91,6 @@ function Buchen() {
     if (button == "{lock}") {
       setLayoutName("shift");
     }
-
     if (button == "{LOCK}") {
       setLayoutName("default");
     }
@@ -110,7 +102,6 @@ function Buchen() {
       setCinput(cinput - 1);
     }
   }
-
   function handleuserinput(e) {
     e += userinput;
   }
@@ -127,7 +118,6 @@ function Buchen() {
       return <div>Correct</div>;
     } else return openTooltip2();
   }
-
   function handleinputclick1(e) {
     closeTooltip();
     openTooltip1();
@@ -139,7 +129,6 @@ function Buchen() {
       <h1>
         <Clock format={"HH:mm:ss"} ticking={true} timezone={"AT/Pacific"} />
       </h1>
-
       <FaBusinessTime
         size={100}
         color={"white"}
@@ -147,7 +136,6 @@ function Buchen() {
           navigate("/");
         }}
       />
-
       <br />
       <br />
       <br />
@@ -203,7 +191,6 @@ function Buchen() {
       <Button variant="success" size="lg" onClick={openTooltip2}>
         Buchen
       </Button>
-
       <Popup
         ref={ref}
         trigger={<div></div>}
@@ -245,7 +232,6 @@ function Buchen() {
           />
         </div>
       </Popup>
-
       <Popup
         ref={ref1}
         trigger={<div></div>}

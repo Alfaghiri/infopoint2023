@@ -16,13 +16,11 @@ import Col from "react-bootstrap/Card";
 import { Row } from "react-bootstrap";
 import { faMap } from "@fortawesome/free-regular-svg-icons";
 import { FaMailchimp, FaOpenid } from "react-icons/fa";
-
 function Bib() {
   let navigate = useNavigate();
   const [bib, setBib] = useState([]);
   const url =
     "https://raw.githubusercontent.com/Alfaghiri/infopoint/master/bib.json";
-
   useEffect(() => {
     fetch(url)
       .then((res) => {
@@ -32,7 +30,6 @@ function Bib() {
         setBib(data);
       });
   }, []);
-
   return (
     <div className="bg-dark text-left m-4">
       <div className="text-center">
@@ -89,7 +86,6 @@ function Bib() {
                   <p>{item.adresse}</p>
                 </div>
               </div>
-
               <div className="row">
                 <div className="col-1">
                   <FontAwesomeIcon icon={faClock} color="white" size="xs" />{" "}
@@ -101,7 +97,6 @@ function Bib() {
                   </p>
                 </div>
               </div>
-
               <div className="row">
                 <div className="col-1">
                   <FontAwesomeIcon icon={faPhone} color="white" size="xs" />{" "}
@@ -110,7 +105,6 @@ function Bib() {
                   <p>{item.tel}</p>
                 </div>
               </div>
-
               <div className="row">
                 <div className="col-1">
                   <FontAwesomeIcon icon={faEnvelope} color="white" size="xs" />{" "}

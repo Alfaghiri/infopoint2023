@@ -40,15 +40,15 @@ function Home() {
             <br />
             <img src={logo} />
           </div>
-          <div
-            className="col"
-            onClick={() => {
-              navigate("/buchen");
-            }}
-          >
+          <div className="col">
             <br />
-            <FontAwesomeIcon icon={faBriefcase} color="white" size="3x" />
-            <p>Zeitbuchen</p>
+            <a
+              href="https://zeinfopoint.hoope.me"
+              style={{ textDecoration: "none" }}
+            >
+              <FontAwesomeIcon icon={faBriefcase} color="white" size="3x" />
+              <p>Zeitbuchen</p>
+            </a>
           </div>
         </div>
       </div>
@@ -63,7 +63,12 @@ function Home() {
             </Card>
           </div>
 
-          <div className="col" onClick={() => navigate("/map")}>
+          <div
+            className="col"
+            onClick={() => {
+              navigate("/map");
+            }}
+          >
             <Card className="bg-secondary text-white pt-3">
               <FontAwesomeIcon icon={faRoute} color="white" size="3x" />
               <p>Karte</p>
@@ -79,7 +84,7 @@ function Home() {
         </div>
         <br />
         <div className="row">
-          <div className="col" onClick={() => navigate("/Resturant")}>
+          <div className="col" onClick={() => navigate("/res")}>
             <Card className="bg-secondary text-white pt-3">
               <FontAwesomeIcon icon={faUtensils} color="white" size="3x" />
               <p>Gastronomie</p>
@@ -101,14 +106,19 @@ function Home() {
         </div>
         <br />
         <div className="row">
-          <div className="col">
+          <div className="col" onClick={() => navigate("/deals")}>
             <Card className="bg-secondary text-white pt-3">
               <FontAwesomeIcon icon={faPercent} color="white" size="3x" />
               <p>Angebote</p>
             </Card>
           </div>
 
-          <div className="col">
+          <div
+            className="col"
+            onClick={() => {
+              navigate("/exam");
+            }}
+          >
             <Card className="bg-secondary text-white pt-3">
               <FontAwesomeIcon icon={faEnvelope} color="white" size="3x" />
               <p>Prüfungen</p>

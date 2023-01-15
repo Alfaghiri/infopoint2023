@@ -7,8 +7,10 @@ import Jobs from "./Jobs";
 import News from "./News";
 import Shop from "./Shop";
 import Events from "./Events";
+import Exam from "./Exam";
+import Deals from "./Deals";
+import Map from "./Map";
 import Resturant from "./Resturant";
-import Unimap from "./Unimap";
 
 const App = () => {
   return (
@@ -22,8 +24,10 @@ const App = () => {
           <Route path="/news" element={<News />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/events" element={<Events />} />
-          <Route path="/Resturant" element={<Resturant />} />
-          <Route path="/map" element={<Unimap />} />
+          <Route path="/exam" element={<Exam />} />
+          <Route path="/deals" element={<Deals />} />
+          <Route path="/map" element={<Map />} />
+          <Route path="/res" element={<Resturant />} />
         </Routes>
       </Router>
     </div>
