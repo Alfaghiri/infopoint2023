@@ -72,8 +72,9 @@ function Resturant() {
       return (
         <div>
           <tr>
-            <td>{kcal * kcalvalue[0]} g </td>
-            <td> {"  " + kcaltable[0]}</td>
+            <td>{kcal * kcalvalue[0] + " g"} </td>
+            <td> </td>
+            <td> {" " + kcaltable[0]}</td>
           </tr>
         </div>
       );
@@ -162,7 +163,7 @@ function Resturant() {
                   modal
                   closeOnDocumentClick={false}
                 >
-                  <div className="popupnews text-white text-center bib">
+                  <div className="popupshop text-white text-center bib">
                     <div className="row">
                       <br />
                       <video autoPlay loop muted>

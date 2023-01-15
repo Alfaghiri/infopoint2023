@@ -77,7 +77,8 @@ function Shop() {
       return (
         <div>
           <tr>
-            <td>{kcal * kcalvalue[0]} g </td>
+            <td>{kcal * kcalvalue[0] + " g"} </td>
+            <td></td>
             <td> {"  " + kcaltable[0]}</td>
           </tr>
         </div>
@@ -87,11 +88,13 @@ function Shop() {
       return (
         <div>
           <tr>
-            <td>{restkcal * kcalvalue[0]}g </td>
+            <td>{restkcal * kcalvalue[0] + " g"} </td>
+            <td></td>
             <td> {"  " + kcaltable[0]}</td>
           </tr>
           <tr>
-            <td>{restkcal * kcalvalue[1]}g </td>
+            <td>{restkcal * kcalvalue[1] + " g"} </td>
+            <td></td>
             <td> {"  " + kcaltable[1]}</td>
           </tr>
         </div>
@@ -168,7 +171,7 @@ function Shop() {
                     modal
                     closeOnDocumentClick={false}
                   >
-                    <div className="popupnews text-white text-center bib">
+                    <div className="popupshop text-white text-center bib">
                       <div className="row">
                         <br />
                         <video autoPlay loop muted>

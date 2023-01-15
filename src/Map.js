@@ -10,53 +10,47 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import listPlugin from "@fullcalendar/list";
 import timeGridPlugin from "@fullcalendar/timegrid";
-import "bootstrap/dist/css/bootstrap.css";
-import "bootstrap-icons/font/bootstrap-icons.css";
+//import "bootstrap/dist/css/bootstrap.css";
+//import "bootstrap-icons/font/bootstrap-icons.css";
 import RingLoader from "react-spinners/RingLoader";
 import Swal from "sweetalert2";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import bootstrap5Plugin from "@fullcalendar/bootstrap5";
-import {
-  faCalendarAlt,
-  faHome,
-  faHouseLaptop,
-  faNewspaper,
-  faRoute,
-} from "@fortawesome/free-solid-svg-icons";
+//import bootstrap5Plugin from "@fullcalendar/bootstrap5";
+import { faHome, faRoute } from "@fortawesome/free-solid-svg-icons";
 import { text } from "@fortawesome/fontawesome-svg-core";
 function Map() {
   const [loading, setLoading] = useState(true);
   const [event, setEvent] = useState([]);
-  const ref = useRef(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const ref = useRef();
   const closePopup = () => ref.current.close();
   let navigate = useNavigate();
-  /*  const url = "http://localhost:5000/job"; */
-  const [fill, setFill] = useState("black");
-  const [textcolor, setTextcolor] = useState("white");
   const [mapPath, setMapPath] = useState([]);
   const url =
     "https://raw.githubusercontent.com/Alfaghiri/infopoint/master/map_eg.json";
   const url_t01 = "https://infocal.herokuapp.com/t01";
   useEffect(() => {
-    fetch(url)
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        setMapPath(data);
-      });
+    async function fetchData() {
+      const res = await fetch(url_t01);
+      const data = await res.json();
+      setEvent(data);
+    }
+    fetchData();
   }, []);
-
   useEffect(() => {
-    fetch(url_t01)
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        setEvent(data);
-      });
+    async function fetchData() {
+      const res = await fetch(url);
+      const data = await res.json();
+      setMapPath(data);
+    }
+    fetchData();
   }, []);
-
+  const handleOpen = () => {
+    setIsOpen(true);
+  };
+  const handleClose = () => {
+    setIsOpen(false);
+  };
   return (
     <div>
       <div className="text-center shopp bg-dark">
@@ -109,7 +103,7 @@ function Map() {
                 ) {
                   return (
                     <Popup
-                      ref={ref}
+                      // ref={ref}
                       trigger={
                         <path id={item.id} className={item.class} d={item.d} />
                       }
@@ -118,13 +112,16 @@ function Map() {
                       arrow={false}
                       modal
                       closeOnDocumentClick={false}
+                      on="click"
+                      open={isOpen}
+                      onOpen={handleOpen}
                     >
                       <FullCalendar
                         plugins={[
                           dayGridPlugin,
                           interactionPlugin,
                           timeGridPlugin,
-                          bootstrap5Plugin,
+                          //bootstrap5Plugin,
                         ]}
                         eventClick={function (arg) {
                           Swal.fire({
@@ -153,7 +150,7 @@ function Map() {
                       />
                       <button
                         className="close bg-indicatorbackground"
-                        onClick={closePopup}
+                        onClick={handleClose}
                       >
                         X
                       </button>
@@ -177,7 +174,6 @@ function Map() {
                       closeOnDocumentClick={false}
                     >
                       <h1 className="text-black text-center">{item.id}</h1>
-
                       <button
                         className="close bg-indicatorbackground"
                         onClick={closePopup}

@@ -21,17 +21,14 @@ function Events() {
   let navigate = useNavigate();
   const url = "https://infoevent.herokuapp.com";
   useEffect(() => {
-    fetch(url)
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        setLoading(false);
-        setEvents(data);
-        console.log(data);
-      });
+    async function fetchData() {
+      const res = await fetch(url);
+      const data = await res.json();
+      setLoading(false);
+      setEvents(data);
+    }
+    fetchData();
   }, []);
-
   return (
     <div>
       <div className="text-center shopp bg-dark">
@@ -81,23 +78,27 @@ function Events() {
       </div>
       <div className="maincontent">
         {events.map((item, index) => {
+          const words = item.des.split(" ");
+          const shortenedWords = words.slice(0, 15);
           return (
             <div>
               <Popup
                 ref={ref}
                 trigger={
-                  <div className="row mt-3 m-2 lh-1 gap-2 bib text-white">
+                  <div className="row mt-3 m-2 lh-1 gap-2 popupevent text-white">
                     <div className="col-5">{<img src={item.image} />}</div>
                     <div className="col lh-1">
                       <h1>{item.titel}</h1>
                       <h2>{item.date}</h2>
-                      <p>{item.des}</p>
+                      <p className="line-height-6">
+                        {shortenedWords.join(" ") + "..."}
+                      </p>
                       <div className="row"></div>
                     </div>
                   </div>
                 }
                 position="top center"
-                className="newscard"
+                className="eventscard"
                 arrow={false}
                 modal
                 closeOnDocumentClick={false}

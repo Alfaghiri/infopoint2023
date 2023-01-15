@@ -17,30 +17,14 @@ function Deals() {
   const url = "https://dealinfo.herokuapp.com/";
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetch(url)
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        setLoading(false);
-        setDeals(data);
-      });
+    async function fetchData() {
+      const res = await fetch(url);
+      const data = await res.json();
+      setLoading(false);
+      setDeals(data);
+    }
+    fetchData();
   }, []);
-
-  /*   useEffect(() => {
-    fetch(
-      "https://www.ots.at/api/liste?app=98cff5cb1d921435af7c3ff0d8b25840&query=%28%28HEADER%3D%275+KI%27+OR+HEADER%3D%275+KA%27%29%29&sourcetype=ALL&anz=50"
-    )
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-      
-
-        setNews(data.ergebnisse);
-        console.log(data.ergebnisse);
-      });
-  }, []); */
 
   return (
     <div>
@@ -108,7 +92,7 @@ function Deals() {
                 </div>
               }
               position="top center"
-              className="salecard"
+              className="eventscard"
               arrow={false}
               modal
               closeOnDocumentClick={false}
@@ -119,9 +103,6 @@ function Deals() {
                   <h1>{item.titel}</h1>
                 </div>
                 <QRCode value={item.link} />
-                <div className="col">
-                  <p>{item.des}</p>
-                </div>
               </div>
               <button
                 className="close bg-indicatorbackground"

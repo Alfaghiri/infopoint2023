@@ -25,10 +25,8 @@ import Card from "react-bootstrap/Card";
 import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
 import Clock from "./Clock";
-
 function Home() {
   let navigate = useNavigate();
-
   return (
     <div className="bg-dark homescreen">
       <div className="text-center">
@@ -54,7 +52,6 @@ function Home() {
       </div>
       <div className="container text-center text-white">
         <br />
-
         <div className="row">
           <div className="col" onClick={() => navigate("/news")}>
             <Card className="bg-secondary text-white pt-3">
@@ -62,7 +59,6 @@ function Home() {
               <p>Nachrichten</p>
             </Card>
           </div>
-
           <div
             className="col"
             onClick={() => {
@@ -74,7 +70,6 @@ function Home() {
               <p>Karte</p>
             </Card>
           </div>
-
           <div className="col" onClick={() => navigate("/events")}>
             <Card className="bg-secondary text-white pt-3">
               <FontAwesomeIcon icon={faCalendarAlt} color="white" size="3x" />
@@ -90,7 +85,6 @@ function Home() {
               <p>Gastronomie</p>
             </Card>
           </div>
-
           <div className="col" onClick={() => navigate("/bib")}>
             <Card className="bg-secondary text-white pt-3">
               <FontAwesomeIcon icon={faBook} color="white" size="3x" />
@@ -112,7 +106,6 @@ function Home() {
               <p>Angebote</p>
             </Card>
           </div>
-
           <div
             className="col"
             onClick={() => {
@@ -149,10 +142,8 @@ function Home() {
                 />
               </video>
             </div>
-
             {/*  <div className="vediohome">
               <div className="homebg"> </div>
-
               <Iframe
                 url="https://iframe.mediadelivery.net/embed/72603/dabf71b9-1b13-42ae-a2c7-f0b8e1851055?autoplay=true&loop=true&muted=true"
                 className="vediogoogle"

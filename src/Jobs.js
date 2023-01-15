@@ -23,14 +23,13 @@ function Jobs() {
   /*  const url = "http://localhost:5000/job"; */
   const url = "https://infojobs.herokuapp.com";
   useEffect(() => {
-    fetch(url)
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        setLoading(false);
-        setJobs(data);
-      });
+    async function fetchData() {
+      const res = await fetch(url);
+      const data = await res.json();
+      setLoading(false);
+      setJobs(data);
+    }
+    fetchData();
   }, []);
 
   return (
@@ -82,6 +81,8 @@ function Jobs() {
       </div>
       <div className="maincontent">
         {jobs.map((item, index) => {
+          const words = item.des.split(" ");
+          const shortenedWords = words.slice(0, 15);
           return (
             <div>
               <Popup
@@ -92,13 +93,15 @@ function Jobs() {
                     <div className="col lh-1">
                       <h1>{item.title}</h1>
                       <br />
-                      <h2 className="jobs">{item.des}</h2>
+                      <h2 className="jobs">
+                        {shortenedWords.join(" ") + "...."}
+                      </h2>
                       <div className="row"></div>
                     </div>
                   </div>
                 }
                 position="top center"
-                className="salecard"
+                className="eventscard"
                 arrow={false}
                 modal
                 closeOnDocumentClick={false}
@@ -109,9 +112,6 @@ function Jobs() {
                     <h1>{item.title}</h1>
                   </div>
                   <QRCode value={item.link} />
-                  <div className="col">
-                    <p>{item.des}</p>
-                  </div>
                 </div>
                 <button
                   className="close bg-indicatorbackground"

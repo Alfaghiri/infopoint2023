@@ -23,33 +23,15 @@ function Exam() {
   const [loading, setLoading] = useState(true);
   let navigate = useNavigate();
   const url = "https://examinfo.herokuapp.com/";
-
   useEffect(() => {
-    fetch(url)
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        setLoading(false);
-        setExam(data);
-      });
+    async function fetchData() {
+      const res = await fetch(url);
+      const data = await res.json();
+      setLoading(false);
+      setExam(data);
+    }
+    fetchData();
   }, []);
-
-  /*   useEffect(() => {
-    fetch(
-      "https://www.ots.at/api/liste?app=98cff5cb1d921435af7c3ff0d8b25840&query=%28%28HEADER%3D%275+KI%27+OR+HEADER%3D%275+KA%27%29%29&sourcetype=ALL&anz=50"
-    )
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-      
-
-        setNews(data.ergebnisse);
-        console.log(data.ergebnisse);
-      });
-  }, []); */
-
   return (
     <div>
       <div className="text-center shopp bg-dark">
@@ -130,14 +112,17 @@ function Exam() {
                     <p>{item.date}</p>
                   </div>
                 </div>
-
                 <div className="row">
                   <div className="col-1">
                     <FontAwesomeIcon icon={faClock} color="white" size="xs" />{" "}
                   </div>
                   <div className="col-10 bib">
                     <p>
-                      {item.start} <br /> {item.end} <br />
+                      {"von " +
+                        item.start.substring(0, 5) +
+                        " bis " +
+                        item.end.substring(0, 5)}{" "}
+                      <br />
                     </p>
                   </div>
                 </div>
@@ -148,20 +133,5 @@ function Exam() {
       </div>
     </div>
   );
-
-  /* return console.log(item.ANHANG); */
-
-  /* 
-    <div>
-      <button onClick={() => navigate("/")}>Home</button>
-    
-    </div> */
 }
 export default Exam;
-
-/* <div key={index}>
-<Card className="bg-dark mt-4">
-  <h1 className="fs-5">{item.TITEL}</h1>
-  {/* {console.log(item.ANHANG.length)} 
-</Card>
-</div> */
