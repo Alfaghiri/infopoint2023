@@ -51,6 +51,7 @@ function Map() {
   const handleClose = () => {
     setIsOpen(false);
   };
+
   return (
     <div>
       <div className="text-center shopp bg-dark">
@@ -168,12 +169,12 @@ function Map() {
                         <path id={item.id} className={item.class} d={item.d} />
                       }
                       position="top center"
-                      className="newscard"
+                      className="eventscard"
                       arrow={false}
                       modal
-                      closeOnDocumentClick={false}
+                      closeOnDocumentClick={true}
                     >
-                      <h1 className="text-black text-center">{item.id}</h1>
+                      <h1 className="text-white text-center">{item.id}</h1>
                       <button
                         className="close bg-indicatorbackground"
                         onClick={closePopup}
