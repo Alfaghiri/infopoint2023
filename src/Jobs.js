@@ -1,19 +1,17 @@
+/* 
+ @authors:
+ Abdul Wahhab Alfaghiri Al Anzi   01524445
+ Nouzad Mohammad                  00820679
+*/
 import React, { useState, useRef, useEffect } from "react";
 import "./App.css";
 import { useNavigate } from "react-router-dom";
-import XMLParser from "react-xml-parser";
-import Card from "react-bootstrap/Card";
 import Popup from "reactjs-popup";
 import Clock from "./Clock";
 import RingLoader from "react-spinners/RingLoader";
 import QRCode from "react-qr-code";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCalendarAlt,
-  faHome,
-  faHouseLaptop,
-  faNewspaper,
-} from "@fortawesome/free-solid-svg-icons";
+import { faHome, faHouseLaptop } from "@fortawesome/free-solid-svg-icons";
 function Jobs() {
   const [loading, setLoading] = useState(true);
   const [jobs, setJobs] = useState([]);
@@ -31,7 +29,6 @@ function Jobs() {
     }
     fetchData();
   }, []);
-
   return (
     <div>
       <div className="text-center shopp bg-dark">

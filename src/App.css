@@ -439,6 +439,10 @@ input::placeholder {
   font-size: 3vw;
   color: rgb(255, 255, 255);
 }
+.newline {
+  white-space: pre-line;
+  vertical-align: bottom;
+}
 .popupshop img {
   border-radius: 2%;
 }

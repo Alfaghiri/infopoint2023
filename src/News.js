@@ -1,10 +1,12 @@
+/* 
+ @authors:
+ Abdul Wahhab Alfaghiri Al Anzi   01524445
+ Nouzad Mohammad                  00820679
+*/
 import React, { useState, useRef, useEffect } from "react";
 import "./App.css";
 import { useNavigate } from "react-router-dom";
 import XMLParser from "react-xml-parser";
-import Card from "react-bootstrap/Card";
-import Col from "react-bootstrap/Card";
-import Row from "react-bootstrap/Card";
 import Popup from "reactjs-popup";
 import Clock from "./Clock";
 import RingLoader from "react-spinners/RingLoader";
@@ -16,7 +18,6 @@ function News() {
   const ref = useRef(null);
   const closePopup = () => ref.current.close();
   let navigate = useNavigate();
-
   function getDateDe(date) {
     let newdate = date.substring(0, 26);
     let day = date.substring(0, 3);
@@ -26,7 +27,6 @@ function News() {
     let time = date.substring(17, 22);
     let dayde = "";
     let monatde = "";
-
     switch (day) {
       case "Sun":
         dayde = "Sonntag";
@@ -88,7 +88,6 @@ function News() {
         monatde = "12";
         break;
     }
-
     return (
       dayde +
       ", " +
@@ -102,7 +101,6 @@ function News() {
       " Uhr"
     );
   }
-
   useEffect(() => {
     fetch("https://rss.orf.at/oesterreich.xml")
       .then((res) => res.text())
@@ -116,22 +114,6 @@ function News() {
       })
       .catch((err) => console.log(err));
   }, []);
-
-  /*   useEffect(() => {
-    fetch(
-      "https://www.ots.at/api/liste?app=98cff5cb1d921435af7c3ff0d8b25840&query=%28%28HEADER%3D%275+KI%27+OR+HEADER%3D%275+KA%27%29%29&sourcetype=ALL&anz=50"
-    )
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-      
-
-        setNews(data.ergebnisse);
-        console.log(data.ergebnisse);
-      });
-  }, []); */
-
   return (
     <div>
       <div className="text-center shopp bg-dark">
@@ -188,7 +170,6 @@ function News() {
             imgurl =
               "https://www.tieraerztekammer.at/fileadmin/daten/_processed_/7/1/csm_ORF.AT_LOGO_f7627ac07c.jpg";
           }
-
           let pupdate = item[5].value;
           return (
             <div>
@@ -235,20 +216,5 @@ function News() {
       </div>
     </div>
   );
-
-  /* return console.log(item.ANHANG); */
-
-  /* 
-    <div>
-      <button onClick={() => navigate("/")}>Home</button>
-    
-    </div> */
 }
 export default News;
-
-/* <div key={index}>
-<Card className="bg-dark mt-4">
-  <h1 className="fs-5">{item.TITEL}</h1>
-  {/* {console.log(item.ANHANG.length)} 
-</Card>
-</div> */

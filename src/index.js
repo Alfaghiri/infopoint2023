@@ -1,3 +1,8 @@
+/* 
+ @authors:
+ Abdul Wahhab Alfaghiri Al Anzi   01524445
+ Nouzad Mohammad                  00820679
+*/
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";

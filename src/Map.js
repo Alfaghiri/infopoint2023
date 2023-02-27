@@ -1,18 +1,19 @@
+/* 
+ @authors:
+ Abdul Wahhab Alfaghiri Al Anzi   01524445
+ Nouzad Mohammad                  00820679
+*/
 import React, { useState, useRef, useEffect } from "react";
 import "./App.css";
 import { useNavigate } from "react-router-dom";
-import XMLParser from "react-xml-parser";
-import Card from "react-bootstrap/Card";
 import Popup from "reactjs-popup";
 import Clock from "./Clock";
 import FullCalendar, { startOfDay } from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
-import listPlugin from "@fullcalendar/list";
 import timeGridPlugin from "@fullcalendar/timegrid";
 //import "bootstrap/dist/css/bootstrap.css";
 //import "bootstrap-icons/font/bootstrap-icons.css";
-import RingLoader from "react-spinners/RingLoader";
 import Swal from "sweetalert2";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 //import bootstrap5Plugin from "@fullcalendar/bootstrap5";
@@ -51,7 +52,7 @@ function Map() {
   const handleClose = () => {
     setIsOpen(false);
   };
-
+  function newline(text) {}
   return (
     <div>
       <div className="text-center shopp bg-dark">
@@ -174,7 +175,7 @@ function Map() {
                       modal
                       closeOnDocumentClick={true}
                     >
-                      <h1 className="text-white text-center">{item.id}</h1>
+                      <h1 className="text-white text-center">{item.text}</h1>
                       <button
                         className="close bg-indicatorbackground"
                         onClick={closePopup}
